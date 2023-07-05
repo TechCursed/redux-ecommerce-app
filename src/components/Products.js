@@ -18,16 +18,45 @@ const Products = () => {
     }
     fetchProducts();
   }, [])
-  
-  
+
+  const getAll = async() => {
+    const res = await fetch('https://fakestoreapi.com/products');
+    const data = await res.json();
+    setProducts(data)
+  }
+
+  const getElectronics = async() => {
+    const res = await fetch('https://fakestoreapi.com/products/category/electronics');
+    const data = await res.json();
+    setProducts(data)
+}
+
+const getJewelery = async() => {
+  const res = await fetch('https://fakestoreapi.com/products/category/jewelery');
+  const data = await res.json();
+  setProducts(data)
+}
+
+
   const handleAdd = (product) =>{
      dispatch(add(product));
   }
 
-
   return (
     <Container> 
     <h1 class="text-center mb-4 mt-5 pt-3">Explore Our Products</h1>
+     
+     {/* Categories button container */}
+    <Container className='d-flex justify-content-center mb-4'>
+      <div class="btn-group" role="group" aria-label="Basic outlined example">
+      <button type="button" class="btn btn-outline-primary" onClick={getAll}>All Products</button>
+      <button type="button" class="btn btn-outline-primary" onClick={getElectronics}>Electronics</button>
+      <button type="button" class="btn btn-outline-primary" onClick={getJewelery}>Jewelery</button>
+      </div>
+    </Container>
+     
+     {/* Rows and Colums to render Product Cards */}
+
     <Row md={2} xs={1} lg={4} className='g-3'>
     {
       
@@ -39,7 +68,7 @@ const Products = () => {
         <Card.Body className="d-flex flex-column">
             <Card.Title className="d-flex mb-4">
                 <span className="ms-2 text-muted">{product.title}</span>
-                <span  className="fs-2"> ${product.price}</span>
+                <span  className="fs-4">${ product.price}</span>
             </Card.Title>
             
             <Button className="w-100 mt-auto" onClick={()=>handleAdd(product)}>Add to Cart</Button>
