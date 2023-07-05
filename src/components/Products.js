@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Container, Button, Card, Row, Col } from "react-bootstrap"
+import { add } from '../store/cartSlice';
+import { useDispatch } from 'react-redux';
 
 const Products = () => {
-
+  
+  const dispatch = useDispatch();
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -16,6 +19,12 @@ const Products = () => {
     fetchProducts();
   }, [])
   
+  
+  const handleAdd = (product) =>{
+     dispatch(add(product));
+  }
+
+
   return (
     <Container> 
     <h1 class="text-center mb-4 mt-5 pt-3">Explore Our Products</h1>
@@ -33,7 +42,7 @@ const Products = () => {
                 <span  className="fs-2"> ${product.price}</span>
             </Card.Title>
             
-            <Button className="w-100 mt-auto">Add to Cart</Button>
+            <Button className="w-100 mt-auto" onClick={()=>handleAdd(product)}>Add to Cart</Button>
         </Card.Body>
        </Card>    
       }   
