@@ -7,11 +7,13 @@ const Cart = () => {
   const products = useSelector( state => state.cart)
 
   return (
-   <div>
+   <div className='mt-5 pt-3'>
+    
+        <h3 className='mt-2 mb-2'>Your Cart Items </h3>
+        <h2>Subtotal : $ 598</h2>
       {
         products.map((product) => {
-         return <Container className='justify-content-center mt-5 pt-3'>
-          <h3 className='mt-2 mb-2'>Your Cart Items </h3>
+         return <Container className='justify-content-center'>
           <div class="card mb-3 w-60" id={product.id}>
           <div class="row no-gutters">
             <div class="col-md-4" >
