@@ -1,16 +1,16 @@
 import React from 'react'
-import { Navbar, Nav, Container} from "react-bootstrap";
+import { Navbar, Container} from "react-bootstrap";
 import {Link} from 'react-router-dom';
 import { FiShoppingCart } from 'react-icons/fi';
 
 const AppNavBar = () => {
   return (
     <div>
-    <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary" sticky="top">
+    <Navbar className="bg-white shadow-sm mb-3 fixed-top">
       <Container>
         <Navbar.Brand href="#home">Shopping App</Navbar.Brand>
-        <Link to="/">Home</Link>
-        <Link to="/cart"> <FiShoppingCart /> Cart {`(0)`} </Link>
+        <Link to="/" style={{ textDecoration: 'none', color:'black', fontSize:'1.5rem'} }>Home</Link>
+        <Link to="/cart" style={{ textDecoration: 'none', color:'black', fontSize:'1.5rem'}} > <FiShoppingCart /> {`(0)`} </Link>
       </Container>
     </Navbar>
     </div>
