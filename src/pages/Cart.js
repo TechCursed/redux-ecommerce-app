@@ -4,12 +4,15 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { remove } from '../store/cartSlice';
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
 
   const products = useSelector( state => state.cart)
   let Subtotal = 0;
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
 
   const handleRemove = (productId) => {
     dispatch(remove(productId));
@@ -36,8 +39,8 @@ const Cart = () => {
         <Container>
         <h3 className='mt-2 mb-2'>Your Cart Items </h3>
         <h2>Subtotal : $ {Subtotal} </h2>
-        <Button variant="primary mb-2">Shop More</Button>{' '}
-        <Button variant="secondary mb-2">Proceed to Checkout</Button>{' '}
+        <Button variant="primary mb-2" onClick={() => navigate('/products')}>Shop More</Button>{' '}
+        <Button variant="secondary mb-2" onClick={() => navigate('/checkout')}>Proceed to Checkout</Button>{' '}
         </Container>
 
       {

@@ -6,6 +6,7 @@ import Cart from './pages/Cart';
 import { Provider } from 'react-redux';
 import store from './store/store';
 import LandingPage from './pages/LandingPage';
+import Checkout from './pages/Checkout';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
          <Route path='/' element={ <LandingPage /> }  />
          <Route path='/products' element={ <Home /> }  />
          <Route path='/cart' element={ <Cart/> } />
+         <Route path='/checkout' element={ <Checkout/> } />
        </Routes>
       </BrowserRouter>
       </Provider>
