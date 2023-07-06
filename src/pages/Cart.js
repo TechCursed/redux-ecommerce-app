@@ -1,16 +1,36 @@
 import React from 'react'
 import { Container } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { remove } from '../store/cartSlice';
 
 const Cart = () => {
 
   const products = useSelector( state => state.cart)
+  let Subtotal = 0;
+  const dispatch = useDispatch();
+
+  const handleRemove = (productId) => {
+    dispatch(remove(productId));
+  }
+  
+  const totalCartValue = () => {
+    products.forEach((product) =>
+      Subtotal = Subtotal + (product.price)
+    )
+    console.log(Subtotal);
+  }
+
+  totalCartValue();
 
   return (
    <div className='mt-5 pt-3'>
     
+        <Container>
         <h3 className='mt-2 mb-2'>Your Cart Items </h3>
-        <h2>Subtotal : $ 598</h2>
+        <h2>Subtotal : $ {Subtotal} </h2>
+        </Container>
+
       {
         products.map((product) => {
          return <Container className='justify-content-center'>
@@ -24,7 +44,7 @@ const Cart = () => {
                 <h5 class="card-title ">{product.title}</h5>
                 <h7 class="card-text mb-4"> Ratings : ⭐ {product.rating.rate}</h7>
                 <h6 class="card-text mb-3"> Price : $ {product.price}</h6>
-                <button type="button mb-3" class="btn btn-danger w-20">Remove</button>
+                <button type="button mb-3" class="btn btn-danger w-20" onClick={ () => handleRemove(product.id)}>Remove</button>
               </div>
             </div>
           </div>

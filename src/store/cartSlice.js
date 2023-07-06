@@ -8,11 +8,11 @@ const cartSlice = createSlice({
        
         //adds products action into the array
         add(state, action){
-          state.push(action.payload)
+          state.push(action.payload);
         },
          //filters the array
-        remove(state,action){
-         state = state.filter(item => item.id !== action.payload)
+        remove(state, action){
+         return state.filter((item) => item.id !== action.payload);
         },
     }
 })
