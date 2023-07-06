@@ -13,7 +13,7 @@ const AppNavBar = () => {
     <div>
     <Navbar className="appnav shadow-sm mb-3 fixed-top" >
       <Container>
-        <Navbar.Brand href="/" >Shop App</Navbar.Brand>
+        <Link to="/" style={{ textDecoration: 'none', color:'black', fontSize:'1.5rem'}}>Shop App</Link>
         <Link to="/products" style={{ textDecoration: 'none', color:'black', fontSize:'1.5rem'}}>Products</Link>
         <Link to="/cart" style={{ textDecoration: 'none', color:'black', fontSize:'1.5rem'}} > <FiShoppingCart /> {items.length} </Link>
       </Container>
