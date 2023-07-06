@@ -3,6 +3,7 @@ import { Container } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { remove } from '../store/cartSlice';
+import Button from 'react-bootstrap/Button';
 
 const Cart = () => {
 
@@ -23,12 +24,20 @@ const Cart = () => {
 
   totalCartValue();
 
+  if(!Subtotal){
+    return <Container className='mt-5 pt-3'>
+      <h2>Your cart is empty</h2>
+      </Container>
+  }
+
   return (
    <div className='mt-5 pt-3'>
     
         <Container>
         <h3 className='mt-2 mb-2'>Your Cart Items </h3>
         <h2>Subtotal : $ {Subtotal} </h2>
+        <Button variant="primary mb-2">Shop More</Button>{' '}
+        <Button variant="secondary mb-2">Proceed to Checkout</Button>{' '}
         </Container>
 
       {
