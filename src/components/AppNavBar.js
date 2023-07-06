@@ -13,8 +13,8 @@ const AppNavBar = () => {
     <div>
     <Navbar className="appnav shadow-sm mb-3 fixed-top" >
       <Container>
-        <Navbar.Brand href="/" style={{ textDecoration: 'none', color:'black', fontSize:'1.5rem'}}>E-Cart App</Navbar.Brand>
-        <Link to="/products" style={{ textDecoration: 'none', color:'black', fontSize:'1.5rem'}}>Home</Link>
+        <Navbar.Brand href="/" >Shop App</Navbar.Brand>
+        <Link to="/products" style={{ textDecoration: 'none', color:'black', fontSize:'1.5rem'}}>Products</Link>
         <Link to="/cart" style={{ textDecoration: 'none', color:'black', fontSize:'1.5rem'}} > <FiShoppingCart /> {items.length} </Link>
       </Container>
     </Navbar>
