@@ -4,6 +4,8 @@ import { Container, Button, Card, Row, Col } from "react-bootstrap"
 import { add } from '../store/cartSlice';
 import { useDispatch } from 'react-redux';
 import LoadingSpinnerComponent from 'react-spinners-components';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Products = () => {
   
@@ -39,9 +41,13 @@ const getJewelery = async() => {
   setProducts(data)
 }
 
+const displayLoginNotification = () => {
+  toast.success("added to cart!");
+}
 
   const handleAdd = (product) =>{
      dispatch(add(product));
+     displayLoginNotification();
   }
   
   if(loader===false)
@@ -89,7 +95,9 @@ const getJewelery = async() => {
       ))
      }
    </Row>
+   <ToastContainer autoClose={1000}/>
    </Container>
+
   )
 }
   

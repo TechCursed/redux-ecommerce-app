@@ -5,6 +5,9 @@ import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { remove } from '../store/cartSlice';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Cart = () => {
 
@@ -12,9 +15,13 @@ const Cart = () => {
   let Subtotal = 0;
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  
+  const displayLoginNotification = () => {
+    toast.error("Item Removed!");
+  }
 
   const handleRemove = (productId) => {
+    displayLoginNotification();
     dispatch(remove(productId));
   }
   
@@ -61,6 +68,7 @@ const Cart = () => {
             </div>
           </div>
         </div>  
+        <ToastContainer autoClose={1000}/>
         </Container> 
         })
       }
