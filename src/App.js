@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import LandingPage from './pages/LandingPage';
 import Checkout from './pages/Checkout';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Provider store={store}>
       <BrowserRouter>
       <AppNavBar />
+      <Toaster />
        <Routes>
          <Route path='/' element={ <LandingPage /> }  />
          <Route path='/products' element={ <Home /> }  />

@@ -4,21 +4,20 @@ import { Container, Button, Card, Row, Col } from "react-bootstrap"
 import { add } from '../store/cartSlice';
 import { useDispatch } from 'react-redux';
 import LoadingSpinnerComponent from 'react-spinners-components';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import toast from 'react-hot-toast';
 
 const Products = () => {
   
   const dispatch = useDispatch();
   const [products, setProducts] = useState([]);
-  const [loader, setLoader] = useState(false)
+  const [loader, setLoader] = useState(true)
 
   useEffect(() => {
     const fetchProducts = async() => {
         const res = await fetch('https://fakestoreapi.com/products');
         const data = await res.json();
         setProducts(data)
-        setLoader(true)
+        setLoader(false)
     }
     fetchProducts();
   }, [])
@@ -50,13 +49,12 @@ const displayLoginNotification = () => {
      displayLoginNotification();
   }
   
-  if(loader===false)
+  if(loader)
   {
-    return <div className='d-flex justify-content-center mb-4 mt-5'>
-       <div style={{paddingTop:"200px"}}>
-       <LoadingSpinnerComponent type={ 'Ripple' } colors={ [ '#06628d', 'purple'] } size={ '150px' } />
-       </div>
-    </div>
+        return <div className='d-flex justify-content-center flex-column' style={{marginTop:"250px"}}>
+        <h2 style={{textAlign:'center'}}>Loading...</h2>
+        <LoadingSpinnerComponent type={ 'Spinner' } color={ 'black' } size={ '150px' } />
+      </div>    
   }
   return (
     <Container> 
@@ -95,7 +93,6 @@ const displayLoginNotification = () => {
       ))
      }
    </Row>
-   <ToastContainer autoClose={1000}/>
    </Container>
 
   )

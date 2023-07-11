@@ -4,8 +4,7 @@ import { Container } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import toast from 'react-hot-toast';
 
 const Checkout = () => {
 
@@ -15,11 +14,6 @@ const [city, setCity] = useState('');
 const [zip, setZip] = useState('');
 const [pass, setPass] = useState('');
    
-
-const displayLoginNotification = () => {
-  toast.success("Order Placed Successfuly!");
-}
-  
 const products = useSelector( state => state.cart);
 let Subtotal = 0;
 
@@ -34,13 +28,10 @@ const totalCartValue = () => {
   const navigate = useNavigate();
 
   //  this purchase function only triggers when form is validated correctly
-   const purchase = () => {
-    // console.log(email, address, city, zip) 
-    displayLoginNotification();
-    setTimeout(function(){
-      navigate("/")
-    },(2000))
-    ;
+    const purchase = () => {
+    toast.success("Order Placed Successfuly!");
+    navigate("/");
+
    }
   
    const clickfunc = (e) => {
@@ -130,8 +121,7 @@ const totalCartValue = () => {
         Pay $ {Subtotal}
       </Button>
     </Form>         
-    <ToastContainer autoClose={2000}/>
-      </Container>
+  </Container>
     </div>
   )
 }

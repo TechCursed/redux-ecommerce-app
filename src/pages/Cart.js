@@ -5,8 +5,9 @@ import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { remove } from '../store/cartSlice';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+import toast from 'react-hot-toast';
 
 
 const Cart = () => {
@@ -35,9 +36,9 @@ const Cart = () => {
   totalCartValue();
 
   if(!Subtotal){
-    return <Container className='mt-5 pt-3'>
-      <h2>Your cart is empty</h2>
-      </Container>
+     return <div className='d-flex justify-content-center flex-column' style={{marginTop:"250px"}}>
+     <h2 style={{textAlign:'center'}}>Your cart is empty!</h2>
+     </div>  
   }
 
   return (
@@ -68,7 +69,6 @@ const Cart = () => {
             </div>
           </div>
         </div>  
-        <ToastContainer autoClose={1000}/>
         </Container> 
         })
       }
