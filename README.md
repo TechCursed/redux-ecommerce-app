@@ -2,7 +2,7 @@
 
 This is a shopping cart application developed using React. It utilizes the fakestore API to fetch product data and renders it on the frontend using card components, providing an enhanced browsing experience for the users.
 
-Live Here : 
+Live Here : [[(redux-ecommerce-app.vercel.app)]](https://redux-ecommerce-app.vercel.app/)
 
 ## Features
 
