@@ -96,7 +96,7 @@ const displayLoginNotification = () => {
   {
         return <div className='d-flex justify-content-center flex-column' style={{marginTop:"250px"}}>
         <h2 style={{textAlign:'center'}}>Loading...</h2>
-        <LoadingSpinnerComponent type={ 'Spinner' } color={ 'black' } size={ '150px' } />
+        <LoadingSpinnerComponent type={ 'Infinity' } color={ '#0D6EFD' } size={ '150px' } />
       </div>    
   }
   return (
