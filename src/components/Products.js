@@ -10,6 +10,7 @@ const Products = () => {
   
   const dispatch = useDispatch();
   const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState("products")
   const [loader, setLoader] = useState(true)
 
   useEffect(() => {
@@ -26,31 +27,60 @@ const Products = () => {
     const res = await fetch('https://fakestoreapi.com/products');
     const data = await res.json();
     setProducts(data)
+    setCategories('products')
+
   }
 
   const getElectronics = async() => {
     const res = await fetch('https://fakestoreapi.com/products/category/electronics');
     const data = await res.json();
-    setProducts(data)
-    
+    setProducts(data);
+    setCategories('electronics')
 }
 
 const getJewelery = async() => {
   const res = await fetch('https://fakestoreapi.com/products/category/jewelery');
   const data = await res.json();
-  setProducts(data)
+  setProducts(data);
+  setCategories('jewelery')
 }
 
 const sortAscending = async() => {
-  const res = await fetch('https://fakestoreapi.com/products?sort=asce');
-  const data = await res.json();
-  setProducts(data)
+  if(categories==='jewelery')
+  {
+    const res = await fetch('https://fakestoreapi.com/products/category/jewelery?sort=aesc');
+    const data = await res.json();
+    setProducts(data)
+  }
+  else if(categories==='electronics'){
+    const res = await fetch('https://fakestoreapi.com/products/category/electronics?sort=aesc');
+    const data = await res.json();
+    setProducts(data)
+  }
+  else{
+    const res = await fetch('https://fakestoreapi.com/products?sort=aesc');
+    const data = await res.json();
+    setProducts(data)    
+  }
 }
 
 const sortDescending = async() => {
-  const res = await fetch('https://fakestoreapi.com/products?sort=desc');
-  const data = await res.json();
-  setProducts(data)
+  if(categories==='jewelery')
+  {
+    const res = await fetch('https://fakestoreapi.com/products/category/jewelery?sort=desc');
+    const data = await res.json();
+    setProducts(data)
+  }
+  else if(categories==='electronics'){
+    const res = await fetch('https://fakestoreapi.com/products/category/electronics?sort=desc');
+    const data = await res.json();
+    setProducts(data)
+  }
+  else{
+    const res = await fetch('https://fakestoreapi.com/products?sort=desc');
+    const data = await res.json();
+    setProducts(data)    
+  }
 }
 
 const displayLoginNotification = () => {
@@ -76,26 +106,18 @@ const displayLoginNotification = () => {
      {/* Categories button container */}
     <Container className='d-flex justify-content-center mb-4'>
       <div class="btn-group" role="group" aria-label="Basic outlined example">
-      <button type="button" class="btn btn-outline-primary" onClick={getAll}>All Products</button>
-      <button type="button" class="btn btn-outline-primary" onClick={getElectronics}>Electronics</button>
-      <button type="button" class="btn btn-outline-primary" onClick={getJewelery}>Jewelery</button>
+      <button type="button" class="btn btn btn-outline-dark" onClick={getAll}>All Products</button>
+      <button type="button" class="btn btn btn-outline-dark" onClick={getElectronics}>Electronics</button>
+      <button type="button" class="btn btn btn-outline-dark" onClick={getJewelery}>Jewelery</button>
       </div>
     </Container>
 
-         {/* Sort radio container */}
+    {/* Sort radio container */}
     <Container className='d-flex justify-content-center mb-4'>
-    <h6>Sort : </h6>
-
-    <div class="form-check">
-      <input class="form-check-input" onClick={() => sortDescending()} type="radio" name="flexRadioDefault" id="flexRadioDefault1" style={{marginLeft:"2px"}}/>
-      <label class="form-check-label" for="flexRadioDefault1" style={{marginLeft:"5px"}}> Oldest</label>
-    </div>
-
-    <div class="form-check">
-      <input class="form-check-input" onClick={() => sortAscending()} type="radio" name="flexRadioDefault" id="flexRadioDefault2" style={{marginLeft:"2px"}}/>
-      <label class="form-check-label" for="flexRadioDefault2" style={{marginLeft:"5px"}}> Newest</label>
-   </div>
-
+      <div class="btn-group" role="group" aria-label="Basic outlined example">
+      <button type="button" class="btn btn-outline-primary btn-sm" onClick={() => sortDescending()} >Oldest</button>
+      <button type="button" class="btn btn-outline-primary btn-sm" onClick={() => sortAscending()}>Newest</button>
+      </div>
     </Container>
      
      {/* Rows and Colums to render Product Cards */}
