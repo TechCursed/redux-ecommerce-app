@@ -17,8 +17,8 @@ const Products = () => {
     const fetchProducts = async() => {
         const res = await fetch('https://fakestoreapi.com/products');
         const data = await res.json();
-        setProducts(data)
-        setLoader(false)
+        setProducts(data);
+        setLoader(false);
     }
     fetchProducts();
   }, [])
@@ -133,10 +133,10 @@ const displayLoginNotification = () => {
         <Card.Body className="d-flex flex-column">
             <Card.Title className="d-flex mb-4">
                 <span className="ms-2 text-muted">{product.title}</span>
-                <span  className="fs-4">${ product.price}</span>
+                <span  className="fs-4">{ product.price}</span>
             </Card.Title>
             
-            <Button className="w-100 mt-auto" onClick={()=>handleAdd(product)}>Add to Cart</Button>
+            <Button className="w-100 mt-auto" onClick={() => handleAdd(product)}> Add to Cart </Button>
         </Card.Body>
        </Card>    
       }   
