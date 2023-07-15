@@ -14,14 +14,14 @@ const Cart = () => {
   let Subtotal = 0;
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
+  console.log(products)
   const displayLoginNotification = () => {
     toast.error("Item Removed!");
   }
 
-  const handleRemove = (productId) => {
+  const handleRemove = (id) => {
     displayLoginNotification();
-    dispatch(remove(productId));
+    dispatch(remove(id));
   }
   
   const totalCartValue = () => {
@@ -62,11 +62,13 @@ const Cart = () => {
                 <h5 class="card-title ">{product.title}</h5>
                 <h7 class="card-text mb-4"> Ratings : ⭐ {product.rating.rate}</h7>
                 <h6 class="card-text mb-3"> Price : $ {product.price}</h6>
-                <button type="button mb-3" class="btn btn-danger w-20" onClick={ () => handleRemove(product.id)}>Remove</button>
+                <button type="button mb-3" class="btn btn-danger w-20" onClick={ () => handleRemove(product.id )}>Remove</button>
               </div>
             </div>
           </div>
         </div>  
+        {   console.log(products)
+}
         </Container> 
         })
       }
